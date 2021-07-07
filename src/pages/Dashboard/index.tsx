@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react';
+import { FiChevronRight } from 'react-icons/fi';
 import api from '../../service/api';
 
 import { Title, Repositories, Form } from './styles';
@@ -23,6 +24,7 @@ const Dashboard: React.FC = () => {
     const repository = response.data;
 
     setRepositories([...repositories, repository]);
+    setNewRepo('');
   }
 
   return (
@@ -39,34 +41,38 @@ const Dashboard: React.FC = () => {
       </Form>
 
       <Repositories>
-        {repositories.map(repository => (
-          <>
+        {/**repositories.map(repository => (
+          <a key={repository.full_name} href="teste">
             <img src={repository.owner.avatar_url} alt={repository.owner.login} />
 
             <div>
               <strong>{repository.full_name}</strong>
               <p>{repository.description}</p>
             </div>
-          </>
-        ))}
+            <FiChevronRight size={20} />
+          </a>
+        ))**/}
+        <a href="teste">
+          <img src="https://avatars.githubusercontent.com/u/80467897?v=4" alt="CauaKath" />
+
+          <div>
+            <strong>CauaKath/ProjetoLoja</strong>
+            <p>Sistema de cadastro, edição, exclusão e listagem de produtos em Java.</p>
+          </div>
+          <FiChevronRight size={20} />
+        </a>
       </Repositories>
 
       <Repositories>
-        <img src="https://avatars.githubusercontent.com/u/80467897?v=4" alt="Cauã" />
+        <a href="teste">
+          <img src="https://avatars.githubusercontent.com/u/80467897?v=4" alt="CauaKath" />
 
-        <div>
-          <strong>CauaKath/GitHubRepository</strong>
-          <p>Projeto para listar repositórios do GitHub</p>
-        </div>
-      </Repositories>
-
-      <Repositories>
-        <img src="https://avatars.githubusercontent.com/u/80467897?v=4" alt="Cauã" />
-
-        <div>
-          <strong>CauaKath/GitHubRepository</strong>
-          <p>Projeto para listar repositórios do GitHub</p>
-        </div>
+          <div>
+            <strong>CauaKath/ProjetoLoja</strong>
+            <p>Sistema de cadastro, edição, exclusão e listagem de produtos em Java.</p>
+          </div>
+          <FiChevronRight size={20} />
+        </a>
       </Repositories>
     </>
   );
